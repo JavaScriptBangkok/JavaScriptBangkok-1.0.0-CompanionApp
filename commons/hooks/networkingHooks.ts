@@ -96,7 +96,7 @@ export const useNetworking = (): Networking => {
     hasAllWinner &&
     winnersArray
       .sort((w1, w2) => (w1 as any)[1] - (w2 as any)[1])
-      .slice(0, 3)
+      .slice(0, 4)
       .filter(winner => {
         return winner[0] === uuid;
       }).length !== 0;
