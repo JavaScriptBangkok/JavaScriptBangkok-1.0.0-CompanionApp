@@ -106,8 +106,9 @@ const Dashboard: React.FC = observer(() => {
 
   const networkingCard = useMemo(() => {
     return (
-      NetworkingResult || (
-        <Card className='flex w-full items-center text-lg flex-col font-bold justify-center items-end'>
+      <>
+        {NetworkingResult}
+        <Card className='flex w-full items-center text-lg flex-col font-bold justify-center items-end mt-6'>
           {isCameraOpen ? (
             <div className='w-full h-full mb-4'>
               <QrReader
@@ -136,7 +137,7 @@ const Dashboard: React.FC = observer(() => {
             {isCameraOpen ? 'Close Camera' : 'Open Camera'}
           </Button>
         </Card>
-      )
+      </>
     );
   }, [isCameraOpen, network]);
 
