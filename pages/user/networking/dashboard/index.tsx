@@ -23,13 +23,12 @@ import TimeOut from '../../../../components/networking/timeout';
 import Winner from '../../../../components/networking/winner';
 import { ModalType } from '../../../../interfaces/Commons';
 import { Network } from '../../../../interfaces/Users';
-
-const Loading: React.FC<{}> = () => <div>...Loading</div>;
+import Loading from '../../../../commons/components/Loading';
 
 const QrReader = dynamic(() => import('react-qr-reader'), {
   ssr: false,
   // eslint-disable-next-line react/display-name
-  loading: () => <Loading />
+  loading: () => <Loading message='loading' />
 });
 
 const onlyUnique = (value: number, index: number, self: number[]) => {
@@ -200,7 +199,7 @@ const withComingSoon: <T>(
     }, [properties.data?.data()?.isEnabled]);
     const isLoading = properties.status === 'loading';
     if (isLoading) {
-      return <Loading />;
+      return <Loading message='Loading menu' color='light' />;
     }
     return enabled ? (
       // eslint-disable-next-line react/jsx-props-no-spreading
@@ -215,4 +214,4 @@ const withComingSoon: <T>(
   };
 };
 
-export default withComingSoon(withRequiredAuthentication(Dashboard));
+export default withRequiredAuthentication(withComingSoon(Dashboard));
