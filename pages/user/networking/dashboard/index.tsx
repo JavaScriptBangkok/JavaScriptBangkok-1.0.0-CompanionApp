@@ -6,6 +6,7 @@ import QRCode from 'qrcode.react';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Button from '../../../../commons/components/Button';
 import Card from '../../../../commons/components/Card';
+import Loading from '../../../../commons/components/Loading';
 import {
   FirebaseModule,
   getEnvName,
@@ -23,7 +24,6 @@ import TimeOut from '../../../../components/networking/timeout';
 import Winner from '../../../../components/networking/winner';
 import { ModalType } from '../../../../interfaces/Commons';
 import { Network } from '../../../../interfaces/Users';
-import Loading from '../../../../commons/components/Loading';
 
 const QrReader = dynamic(() => import('react-qr-reader'), {
   ssr: false,
@@ -199,7 +199,7 @@ const withComingSoon: <T>(
     }, [properties.data?.data()?.isEnabled]);
     const isLoading = properties.status === 'loading';
     if (isLoading) {
-      return <Loading message='Loading menu' color='light' />;
+      return <Loading message='Loading' color='light' />;
     }
     return enabled ? (
       // eslint-disable-next-line react/jsx-props-no-spreading
