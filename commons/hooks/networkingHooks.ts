@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/indent */
 import { useCallback, useEffect, useState } from 'react';
 import {
+  isFetchingCompleted,
+  isFetchingFailed,
+  Networking
+} from '../../interfaces/Commons';
+import { NetworkingProfile } from '../../interfaces/Users';
+import {
+  FirebaseModule,
   getEnvName,
   getFirebase,
-  FirebaseModule,
   useFirestoreSnapshot,
   useRealtimeDatabaseSnapshot
 } from '../firebase';
-import { NetworkingProfile } from '../../interfaces/Users';
-import {
-  Networking,
-  isFetchingFailed,
-  isFetchingCompleted
-} from '../../interfaces/Commons';
 
 export default async function addUserToNetwork(uid: string) {
   const firebase = await getFirebase();
@@ -91,7 +91,7 @@ export const useNetworking = (): Networking => {
 
   const winners = realtimeFetchResult.data?.val();
   const winnersArray = winners ? Object.entries(winners) : [];
-  const hasAllWinner = winnersArray.length >= 3;
+  const hasAllWinner = winnersArray.length >= 4;
   const isWinner =
     hasAllWinner &&
     winnersArray
