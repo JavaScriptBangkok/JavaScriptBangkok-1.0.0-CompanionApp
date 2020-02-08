@@ -7,8 +7,14 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Button from '../../../../commons/components/Button';
 import Card from '../../../../commons/components/Card';
 import Loading from '../../../../commons/components/Loading';
-import { FirebaseModule, getEnvName, useFirestoreSnapshot } from '../../../../commons/firebase';
-import addUserToNetwork, { useNetworking } from '../../../../commons/hooks/networkingHooks';
+import {
+  FirebaseModule,
+  getEnvName,
+  useFirestoreSnapshot
+} from '../../../../commons/firebase';
+import addUserToNetwork, {
+  useNetworking
+} from '../../../../commons/hooks/networkingHooks';
 import createModalStore from '../../../../commons/stores/authModalStores';
 import { withRequiredAuthentication } from '../../../../components/authentication';
 import BadgeList from '../../../../components/networking/BadgeList';
@@ -100,7 +106,7 @@ const Dashboard: React.FC = observer(() => {
 
   const networkingCard = useMemo(() => {
     return (
-      <div className="flex flex-col">
+      <div className='w-full flex flex-col'>
         {NetworkingResult}
         <Card className='flex w-full items-center text-lg flex-col font-bold justify-center items-end mt-6'>
           {isCameraOpen ? (
